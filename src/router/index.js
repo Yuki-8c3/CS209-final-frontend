@@ -9,7 +9,7 @@ import Layout from '@/layout'
 /* Router Modules */
 // import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
-// import tableRouter from './modules/table'
+import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
 import tagRouter from './modules/tags'
 
@@ -53,7 +53,59 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/acceptedAnswers',
+    component: Layout,
+    redirect: '/acceptedAnswers',
+    children: [
+      {
+        path: 'acceptedAnswers',
+        component: () => import('@/views/accepted-answers/index'),
+        name: 'AcceptedAnswers',
+        meta: { title: 'AcceptedAnswers', icon: 'education', affix: true }
+      }
+    ]
+  },
+  {
+    path: '/users',
+    component: Layout,
+    redirect: '/users',
+    children: [
+      {
+        path: 'users',
+        component: () => import('@/views/users/index'),
+        name: 'Users',
+        meta: { title: 'Users', icon: 'user', affix: true }
+      }
+    ]
+  },
   tagRouter,
+  {
+    path: '/frequentApis',
+    component: Layout,
+    redirect: '/frequentApis',
+    children: [
+      {
+        path: 'frequentApis',
+        component: () => import('@/views/frequent-apis/index'),
+        name: 'FrequentApis',
+        meta: { title: 'FrequentApis', icon: 'international', affix: true }
+      }
+    ]
+  },
+  {
+    path: '/restfulApis',
+    component: Layout,
+    redirect: '/restfulApis',
+    children: [
+      {
+        path: 'restfulApis',
+        component: () => import('@/views/restful-apis/index'),
+        name: 'RestfulApis',
+        meta: { title: 'RestfulApis', icon: 'search', affix: true }
+      }
+    ]
+  },
   {
     path: '/redirect',
     component: Layout,
@@ -144,66 +196,66 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
-  {
-    path: '/permission',
-    component: Layout,
-    redirect: '/permission/page',
-    alwaysShow: true, // will always show the root menu
-    name: 'Permission',
-    meta: {
-      title: 'Permission',
-      icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
-    },
-    children: [
-      {
-        path: 'page',
-        component: () => import('@/views/permission/page'),
-        name: 'PagePermission',
-        meta: {
-          title: 'Page Permission',
-          roles: ['admin'] // or you can only set roles in sub nav
-        }
-      },
-      {
-        path: 'directive',
-        component: () => import('@/views/permission/directive'),
-        name: 'DirectivePermission',
-        meta: {
-          title: 'Directive Permission'
-          // if do not set roles, means: this page does not require permission
-        }
-      },
-      {
-        path: 'role',
-        component: () => import('@/views/permission/role'),
-        name: 'RolePermission',
-        meta: {
-          title: 'Role Permission',
-          roles: ['admin']
-        }
-      }
-    ]
-  },
+  // {
+  //   path: '/permission',
+  //   component: Layout,
+  //   redirect: '/permission/page',
+  //   alwaysShow: true, // will always show the root menu
+  //   name: 'Permission',
+  //   meta: {
+  //     title: 'Permission',
+  //     icon: 'lock',
+  //     roles: ['admin', 'editor'] // you can set roles in root nav
+  //   },
+  //   children: [
+  //     {
+  //       path: 'page',
+  //       component: () => import('@/views/permission/page'),
+  //       name: 'PagePermission',
+  //       meta: {
+  //         title: 'Page Permission',
+  //         roles: ['admin'] // or you can only set roles in sub nav
+  //       }
+  //     },
+  //     {
+  //       path: 'directive',
+  //       component: () => import('@/views/permission/directive'),
+  //       name: 'DirectivePermission',
+  //       meta: {
+  //         title: 'Directive Permission'
+  //         // if do not set roles, means: this page does not require permission
+  //       }
+  //     },
+  //     {
+  //       path: 'role',
+  //       component: () => import('@/views/permission/role'),
+  //       name: 'RolePermission',
+  //       meta: {
+  //         title: 'Role Permission',
+  //         roles: ['admin']
+  //       }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: '/icon',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/icons/index'),
-        name: 'Icons',
-        meta: { title: 'Icons', icon: 'icon', noCache: true }
-      }
-    ]
-  },
+  // {
+  //   path: '/icon',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/icons/index'),
+  //       name: 'Icons',
+  //       meta: { title: 'Icons', icon: 'icon', noCache: true }
+  //     }
+  //   ]
+  // },
 
   /** when your routing map is too long, you can split it into small modules **/
   // componentsRouter,
   chartsRouter,
   // nestedRouter,
-  // tableRouter,
+  tableRouter,
 
   // {
   //   path: '/example',

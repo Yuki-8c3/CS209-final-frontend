@@ -66,8 +66,9 @@ export default {
         xAxis: {
           data: ['0', '1', '2', '3', '4', '5', '6', '7+'],
           boundaryGap: false,
+          name: 'answers',
           axisTick: {
-            show: false
+            show: true
           }
         },
         grid: {
@@ -82,23 +83,25 @@ export default {
           axisPointer: {
             type: 'cross'
           },
-          padding: [5, 10]
+          padding: [5, 20]
         },
         yAxis: {
+          name: 'question cnt',
           axisTick: {
-            show: false
+            show: true
           }
         },
         legend: {
-          data: ['count of questions']
+          data: ['question cnt']
         },
         series: [{
-          name: 'count of questions', itemStyle: {
+          name: 'question cnt', itemStyle: {
             normal: {
               color: '#FF005A',
+              width: 3,
               lineStyle: {
                 color: '#FF005A',
-                width: 2
+                width: 3
               }
             }
           },
