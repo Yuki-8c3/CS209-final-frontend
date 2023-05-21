@@ -11,6 +11,7 @@ import Layout from '@/layout'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
+import frequentRouter from './modules/frequent-apis'
 import tagRouter from './modules/tags'
 
 /**
@@ -80,19 +81,19 @@ export const constantRoutes = [
     ]
   },
   tagRouter,
-  {
-    path: '/frequentApis',
-    component: Layout,
-    redirect: '/frequentApis',
-    children: [
-      {
-        path: 'frequentApis',
-        component: () => import('@/views/frequent-apis/index'),
-        name: 'FrequentApis',
-        meta: { title: 'FrequentApis', icon: 'international', affix: true }
-      }
-    ]
-  },
+  // {
+  //   path: '/frequentApis',
+  //   component: Layout,
+  //   redirect: '/frequentApis',
+  //   children: [
+  //     {
+  //       path: 'frequentApis',
+  //       component: () => import('@/views/frequent-apis/index'),
+  //       name: 'FrequentApis',
+  //       meta: { title: 'FrequentApis', icon: 'international', affix: true }
+  //     }
+  //   ]
+  // },
   {
     path: '/restfulApis',
     component: Layout,
@@ -253,6 +254,7 @@ export const asyncRoutes = [
 
   /** when your routing map is too long, you can split it into small modules **/
   // componentsRouter,
+  frequentRouter,
   chartsRouter,
   // nestedRouter,
   tableRouter,
