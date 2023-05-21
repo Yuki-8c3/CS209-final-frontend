@@ -94,19 +94,19 @@ export const constantRoutes = [
   //     }
   //   ]
   // },
-  {
-    path: '/restfulApis',
-    component: Layout,
-    redirect: '/restfulApis',
-    children: [
-      {
-        path: 'restfulApis',
-        component: () => import('@/views/restful-apis/index'),
-        name: 'RestfulApis',
-        meta: { title: 'RestfulApis', icon: 'search', affix: true }
-      }
-    ]
-  },
+  // {
+  //   path: '/restfulApis',
+  //   component: Layout,
+  //   redirect: '/restfulApis',
+  //   children: [
+  //     {
+  //       path: 'restfulApis',
+  //       component: () => import('@/views/restful-apis/index'),
+  //       name: 'RestfulApis',
+  //       meta: { title: 'RestfulApis', icon: 'search', affix: true }
+  //     }
+  //   ]
+  // },
   {
     path: '/redirect',
     component: Layout,
@@ -138,19 +138,19 @@ export const constantRoutes = [
     component: () => import('@/views/error-page/401'),
     hidden: true
   },
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
-      }
-    ]
-  }
+  // {
+  //   path: '/',
+  //   component: Layout,
+  //   redirect: '/dashboard',
+  //   children: [
+  //     {
+  //       path: 'dashboard',
+  //       component: () => import('@/views/dashboard/index'),
+  //       name: 'Dashboard',
+  //       meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+  //     }
+  //   ]
+  // }
   // {
   //   path: '/documentation',
   //   component: Layout,

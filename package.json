@@ -57,11 +57,10 @@
     "chalk": "2.4.2",
     "chokidar": "2.1.5",
     "connect": "3.6.6",
-    "eslint": "6.7.2",
-    "eslint-plugin-vue": "6.2.2",
+    "eslint-plugin-vue": "",
     "html-webpack-plugin": "3.2.0",
     "husky": "1.3.1",
-    "lint-staged": "8.1.5",
+    "lint-staged": "",
     "mockjs": "1.0.1-beta3",
     "plop": "2.3.0",
     "runjs": "4.3.2",
@@ -95,14 +94,11 @@
   ],
   "license": "MIT",
   "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
+
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+
     }
   },
   "repository": {
