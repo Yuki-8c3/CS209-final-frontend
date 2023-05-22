@@ -51,12 +51,22 @@ export default {
           console.log(data)
           this.chart = echarts.init(document.getElementById(this.id))
           const xAxisData = []
-
           const data2 = []
-          for (let i = 0; i < 226; i++) {
-            xAxisData.push(i)
+          for (let i = 0; i < 18; i++) {
+            xAxisData.push(data[i][0])
+            data2.push(data[i][1])
           }
           this.chart.setOption({
+            title: {
+              text: 'Distribution of question resolution time ',
+              textStyle: {
+                fontStyle: 'oblique',
+                fontSize: 40,
+                color: '#f8f8ff'
+              },
+              left: 'center',
+              top: '5%' // 调整标题的位置，这里设置为距离顶部的百分比
+            },
             backgroundColor: '#08263a',
             grid: {
               left: '5%',
@@ -64,10 +74,21 @@ export default {
             },
             xAxis: [{
               show: true,
-              data: xAxisData
+              data: xAxisData,
+              name: 'resolution\ntime',
+              nameTextStyle: {
+                //y轴上方单位的颜色
+                color: "#fff",
+              },
+              axisLabel: {
+                textStyle: {
+                  color: '#fff'
+                }
+              },
             }, {
-              show: true,
-              data: xAxisData
+              show: false,
+              data: xAxisData,
+
             }],
             visualMap: {
               show: true,
@@ -79,12 +100,17 @@ export default {
               }
             },
             yAxis: {
+              name: 'question count',
+              nameTextStyle: {
+                //y轴上方单位的颜色
+                color: "#fff",
+              },
               axisLine: {
                 show: true
               },
               axisLabel: {
                 textStyle: {
-                  color: '#4a657a'
+                  color: '#fff'
                 }
               },
               splitLine: {
@@ -153,8 +179,8 @@ export default {
             }
           })
         })
-        .catch(errorPercentageWithoutAnswers => {
-          console.log('ERROR in PercentageWithoutAnswers')
+        .catch(errorQuestionResolutionTimeDistribution => {
+          console.log('ERROR in QuestionResolutionTimeDistribution')
         })
     }
   }

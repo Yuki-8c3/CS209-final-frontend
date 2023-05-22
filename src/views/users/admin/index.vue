@@ -4,31 +4,17 @@
     <panel-group @handleSetLineChartData="handleSetLineChartData" />
 
     <el-row style="background:#fff;padding:16px 32px 0;margin-bottom:32px;">
-      <!--      <line-chart :chart-data="lineChartData" />-->
-      <!--    </el-row>-->
-
-      <!--    <el-row :gutter="32">-->
-      <!--      <el-col :xs="24" :sm="24" :lg="8">-->
-      <!--        <div class="chart-wrapper">-->
-      <!--          <raddar-chart />-->
-      <!--        </div>-->
-      <!--      </el-col>-->
       <el-col :xs="24" :sm="24" :lg="10">
         <div class="chart-wrapper">
           <pie-chart />
         </div>
       </el-col>
+      <el-col :xs="24" :sm="24" :lg="8">
+        <div class="chart-wrapper">
+          <BarChart></BarChart>
+        </div>
+      </el-col>
 
-      <!--      <el-col :xs="24" :sm="24" :lg="12">-->
-      <!--        <div class="chart-wrapper">-->
-      <!--         <without-i-d-pie></without-i-d-pie>-->
-      <!--        </div>-->
-      <!--      </el-col>-->
-    <!--      <el-col :xs="24" :sm="24" :lg="8">-->
-    <!--        <div class="chart-wrapper">-->
-    <!--          <bar-chart />-->
-    <!--        </div>-->
-    <!--      </el-col>-->
     </el-row>
     <el-row style="background:#fff;padding:16px 32px 0;margin-bottom:32px;">
       <el-col :xs="24" :sm="24" :lg="15">
@@ -37,19 +23,31 @@
         </div>
       </el-col>
     </el-row>
+    <el-row style="background:#fff;padding:16px 32px 0;margin-bottom:32px;">
+      <el-col :xs="24" :sm="24" :lg="25">
+        <div class="app-container">
+          <div style="margin:0 0 5px 20px">
+            Top 10 active users
+          </div>
+          <FixedThead></FixedThead>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
+import FixedThead from './dynamic-table/components/FixedThead.vue'
 import PanelGroup from './components/PanelGroup'
 // import LineChart from './components/LineChart'
 // import Chart from '@/components/Charts/Keyboard'
 // import RaddarChart from './components/RaddarChart'
 import PieChart from './components/PieChart'
 // import WithoutIDPie from '@/views/users/admin/components/WithoutIDPie.vue'
-// import BarChart from './components/BarChart'
+import BarChart from './components/BarChart'
 import axios from 'axios'
 import ActiveUserCloud from '@/views/users/admin/components/ActiveUserCloud.vue'
+// import BarChart from '@/views/dashboard/admin/components/BarChart.vue'
 
 const lineChartData = {
   answers_distribution: {
@@ -60,6 +58,7 @@ const lineChartData = {
 export default {
   name: 'DashboardAdmin',
   components: {
+    BarChart,
     ActiveUserCloud,
     // GithubCorner,
     PanelGroup,
@@ -67,7 +66,8 @@ export default {
     // Chart,
     // WithoutIDPie,
     // RaddarChart
-    PieChart
+    PieChart,
+    FixedThead
     // BarChart
   },
   data() {
@@ -108,17 +108,13 @@ export default {
   background-color: rgb(240, 242, 245);
   position: relative;
 
-  .github-corner {
-    position: absolute;
-    top: 0px;
-    border: 0;
-    right: 0;
-  }
 
   .chart-wrapper {
     background: #fff;
     padding: 16px 16px 0;
     margin-bottom: 32px;
+    margin-left: 50px;
+    //position:relative;
   }
 }
 

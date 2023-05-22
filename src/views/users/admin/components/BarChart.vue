@@ -6,6 +6,7 @@
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
+import axios from 'axios'
 
 const animationDuration = 6000
 
@@ -18,7 +19,7 @@ export default {
     },
     width: {
       type: String,
-      default: '100%'
+      default: '600px'
     },
     height: {
       type: String,
@@ -44,58 +45,70 @@ export default {
   },
   methods: {
     initChart() {
-      this.chart = echarts.init(this.$el, 'macarons')
 
-      this.chart.setOption({
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-          }
-        },
-        grid: {
-          top: 10,
-          left: '2%',
-          right: '2%',
-          bottom: '3%',
-          containLabel: true
-        },
-        xAxis: [{
-          type: 'category',
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          axisTick: {
-            alignWithLabel: true
-          }
-        }],
-        yAxis: [{
-          type: 'value',
-          axisTick: {
-            show: false
-          }
-        }],
-        series: [{
-          name: 'pageA',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [79, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageB',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [80, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }, {
-          name: 'pageC',
-          type: 'bar',
-          stack: 'vistors',
-          barWidth: '60%',
-          data: [30, 52, 200, 334, 390, 330, 220],
-          animationDuration
-        }]
+      axios.get('http://localhost:9090/SingleQuestionUserDistributionGraph')
+      .then(response => {
+        const xAxisData = []
+        const yAxisData  = []
+        var data =[]
+        data = response.data
+        for (let i = 0; i < 5; i++) {
+          xAxisData.push(data[i][0])
+          yAxisData.push(data[i][1])
+        }
+        this.chart = echarts.init(this.$el, 'macarons')
+        this.chart.setOption({
+          title: {
+            text: 'Bar chart of Percentage(Comment/Answer) in questions',
+            textStyle: {
+              fontStyle: 'oblique',
+              fontSize: 20,
+              color: '#201e65'
+            },
+            left: 'center',
+            top: '0%' // 调整标题的位置，这里设置为距离顶部的百分比
+          },
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+              type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+            }
+          },
+          grid: {
+            top: 10,
+            left: '2%',
+            right: '2%',
+            bottom: '3%',
+            containLabel: true
+          },
+          xAxis: [{
+            type: 'category',
+            data: xAxisData,
+            axisTick: {
+              alignWithLabel: true
+            },
+            axisLabel:{
+              show:true,
+              interval:0
+            }
+          }],
+          yAxis: [{
+            type: 'value',
+            axisTick: {
+              show: false
+            }
+          }],
+          series: [{
+            name: 'pageA',
+            type: 'bar',
+            stack: 'vistors',
+            barWidth: '60%',
+            data: yAxisData,
+            animationDuration
+          }]
+        })
       })
+
     }
   }
 }

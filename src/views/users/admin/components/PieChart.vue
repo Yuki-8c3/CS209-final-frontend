@@ -16,7 +16,7 @@ export default {
     },
     width: {
       type: String,
-      default: '100%'
+      default: '600px'
     },
     height: {
       type: String,
@@ -49,7 +49,7 @@ export default {
           text: 'Pie chart of users involved in thread discussions',
           textStyle: {
             fontStyle: 'oblique',
-            fontSize: 10,
+            fontSize: 20,
             color: '#201e65'
           },
           left: 'center',
