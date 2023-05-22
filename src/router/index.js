@@ -9,10 +9,12 @@ import Layout from '@/layout'
 /* Router Modules */
 // import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
+// import relationRouter from './modules/relations'
 import tableRouter from './modules/table'
 // import nestedRouter from './modules/nested'
 import frequentRouter from './modules/frequent-apis'
 import tagRouter from './modules/tags'
+import relationRouter from './modules/relations'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -81,32 +83,7 @@ export const constantRoutes = [
     ]
   },
   tagRouter,
-  // {
-  //   path: '/frequentApis',
-  //   component: Layout,
-  //   redirect: '/frequentApis',
-  //   children: [
-  //     {
-  //       path: 'frequentApis',
-  //       component: () => import('@/views/frequent-apis/index'),
-  //       name: 'FrequentApis',
-  //       meta: { title: 'FrequentApis', icon: 'international', affix: true }
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: '/restfulApis',
-  //   component: Layout,
-  //   redirect: '/restfulApis',
-  //   children: [
-  //     {
-  //       path: 'restfulApis',
-  //       component: () => import('@/views/restful-apis/index'),
-  //       name: 'RestfulApis',
-  //       meta: { title: 'RestfulApis', icon: 'search', affix: true }
-  //     }
-  //   ]
-  // },
+
   {
     path: '/redirect',
     component: Layout,
@@ -255,9 +232,10 @@ export const asyncRoutes = [
   /** when your routing map is too long, you can split it into small modules **/
   // componentsRouter,
   frequentRouter,
-  chartsRouter,
+  // relationRouter,
+  // chartsRouter,
   // nestedRouter,
-  tableRouter,
+  // tableRouter,
 
   // {
   //   path: '/example',

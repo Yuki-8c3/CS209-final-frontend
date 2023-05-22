@@ -68,7 +68,7 @@ export default {
             shape: {
               cloudGrow: 0.2
             },
-            sizeRange: [10, 60],
+            sizeRange: [30, 60],
             rotationRange: [-30, 30],
             gridSize: 2,
             drawOutOfBound: false,
@@ -138,7 +138,7 @@ export default {
             {
               name: 'Radius Mode',
               type: 'pie',
-              radius: [20,180],
+              radius: [100,180],
               center: ['50%', '50%'],
               roseType: 'radius',
               itemStyle: {

@@ -138,7 +138,7 @@ export default {
               {
                 name: 'Radius Mode',
                 type: 'pie',
-                radius: [20,180],
+                radius: [100,180],
                 center: ['50%', '50%'],
                 roseType: 'radius',
                 itemStyle: {
