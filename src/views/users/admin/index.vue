@@ -111,16 +111,16 @@ export default {
 
   .chart-wrapper {
     background: #fff;
-    padding: 16px 16px 0;
+    padding: 32px 32px 32px;
     margin-bottom: 32px;
-    margin-left: 50px;
+    //margin-left: 50px;
     //position:relative;
   }
 }
 
 @media (max-width:1024px) {
   .chart-wrapper {
-    padding: 8px;
+    padding: 32px 32px 32px;
   }
 }
 </style>

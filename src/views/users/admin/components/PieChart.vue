@@ -16,7 +16,7 @@ export default {
     },
     width: {
       type: String,
-      default: '600px'
+      default: '400px'
     },
     height: {
       type: String,
@@ -46,7 +46,7 @@ export default {
 
       this.chart.setOption({
         title: {
-          text: 'Pie chart of users involved in thread discussions',
+          text: 'Pie chart of users \ninvolved in thread discussions',
           textStyle: {
             fontStyle: 'oblique',
             fontSize: 20,
@@ -66,7 +66,7 @@ export default {
         },
         series: [
           {
-            name: 'WEEKLY WRITE ARTICLES',
+            name: 'posters',
             type: 'pie',
             roseType: 'radius',
             radius: [15, 95],

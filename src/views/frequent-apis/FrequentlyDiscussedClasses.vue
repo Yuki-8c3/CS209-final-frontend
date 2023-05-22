@@ -1,7 +1,17 @@
-<template>
+<template> <div>
   <div class="container">
     <div id="chart-container"/>
     <div id="pie-container"/>
+  </div>
+  <div class="app-container">
+  <el-table :key="key" :data="tableData" border fit highlight-current-row style="width: 100%">
+    <el-table-column v-for="fruit in formThead" :key="fruit" :label="fruit">
+      <template slot-scope="scope">
+        {{ scope.row[fruit] }}
+      </template>
+    </el-table-column>
+  </el-table>
+</div>
   </div>
 </template>
 
@@ -9,11 +19,17 @@
 import echarts from 'echarts'
 import 'echarts-wordcloud'
 import axios from 'axios'
-
+const defaultFormThead = ['name', 'value']
 export default {
   name: 'FrequentlyDiscussedClasses',
   data() {
     return {
+      tableData: [
+
+      ],
+      key: 1, // table key
+      checkboxVal: defaultFormThead, // checkboxVal
+      formThead: defaultFormThead, // 默认表头 Default header
       chart: null,
       pieChart: null
     }
@@ -42,6 +58,7 @@ export default {
         this.chart = echarts.init(document.getElementById('chart-container'))
         keywords = response.data
         piewords = keywords
+        this.tableData = keywords
         var option = {
           title: {
             text: 'Frequent Discussed Classes \nWordCloud',
@@ -136,7 +153,7 @@ export default {
           },
           series: [
             {
-              name: 'Radius Mode',
+              name: 'Frequent classes',
               type: 'pie',
               radius: [20, 180],
               center: ['50%', '50%'],
